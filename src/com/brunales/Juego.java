@@ -129,7 +129,54 @@ public class Juego {
             return false;
         }
 
+        public static void ahorcado() {
+            boolean acierto = false;
+            Scanner sc = new Scanner(System.in);
+            Random rand = new Random();
+            String[] words = {"arbol", "pantalla"};
+            System.out.println("Adivina la palabra");
+            String word = words[rand.nextInt(words.length)];
+            String aux = nOfSpaces(word.length());
 
+            for (int i = 0; i<word.length(); i++) {
+                System.out.print("*");
+            }
+            do {
+                System.out.println();
+                System.out.println("INTRODUCE UNA LETRA");
+                String letra = sc.nextLine();
+                for (int i = 0; i<word.length(); i++) {
+                    if (letra.equals(""+word.charAt(i))) {
+                        System.out.println(insertIn(aux, letra.charAt(0), aux.indexOf(i)));
+                    }
+                    else{
+                        System.out.print("*");
+                    }
+                }
+            } while (acierto == false);
+
+        }
+
+        public static String insertIn(String s, char c, int i) {
+            char[] chars = new char[s.length()];
+            for (int j = 0; j<s.length(); j++) {
+                chars[j] = s.charAt(j);
+            }
+            s = "";
+            chars[i] = c;
+            for (int k = 0; k<chars.length; k++) {
+                s += chars[k];
+            }
+            return s;
+        }
+
+        public static String nOfSpaces(int n) {
+            String spaces = "";
+            for (int i = 0; i<n; i++) {
+                spaces+=" ";
+            }
+            return spaces;
+        }
 
 }
 
