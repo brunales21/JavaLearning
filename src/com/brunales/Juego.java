@@ -148,7 +148,7 @@ public class Juego {
                 char letra = line.charAt(0);
                 for (int i = 0; i<word.length(); i++) {
                     if (letra == word.charAt(i)) {
-                        insertIn(aux, letra, i);
+                        aux = insertIn(aux, letra, i);
                     }
                 }
                 System.out.println(aux);
