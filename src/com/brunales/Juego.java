@@ -136,7 +136,7 @@ public class Juego {
             String[] words = {"arbol", "pantalla"};
             System.out.println("Adivina la palabra");
             String word = words[rand.nextInt(words.length)];
-            String aux = nOfSpaces(word.length());
+            String aux = rightPadding("", '*', word.length());
 
             for (int i = 0; i<word.length(); i++) {
                 System.out.print("*");
@@ -144,20 +144,27 @@ public class Juego {
             do {
                 System.out.println();
                 System.out.println("INTRODUCE UNA LETRA");
-                String letra = sc.nextLine();
+                String line = sc.nextLine();
+                char letra = line.charAt(0);
                 for (int i = 0; i<word.length(); i++) {
-                    if (letra.equals(""+word.charAt(i))) {
-                        System.out.println(insertIn(aux, letra.charAt(0), aux.indexOf(i)));
-                    }
-                    else{
-                        System.out.print("*");
+                    if (letra == word.charAt(i)) {
+                        insertIn(aux, letra, i);
                     }
                 }
-            } while (acierto == false);
+                System.out.println(aux);
+            } while (hayAsteriscos(aux));
 
         }
 
+        private static boolean hayAsteriscos(String txt) {
+            return txt.indexOf('*') != -1;
+        }
+
         public static String insertIn(String s, char c, int i) {
+            char[] chars = s.toCharArray();
+            chars[i] = c;
+            return new String(chars);
+            /*
             char[] chars = new char[s.length()];
             for (int j = 0; j<s.length(); j++) {
                 chars[j] = s.charAt(j);
@@ -168,14 +175,14 @@ public class Juego {
                 s += chars[k];
             }
             return s;
+             */
         }
 
-        public static String nOfSpaces(int n) {
-            String spaces = "";
+        public static String rightPadding(String text, char c, int n) {
             for (int i = 0; i<n; i++) {
-                spaces+=" ";
+                text+=c;
             }
-            return spaces;
+            return text;
         }
 
 }
