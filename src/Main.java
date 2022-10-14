@@ -3,10 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //System.out.println(getSiglas());
-        //System.out.println(getAscii('x'));
-        //System.out.println(getHighestIncrease(b));
-        distAtoB();
+        
     }
 
     static int[] c = {9, 10, 12, 5, 7};
