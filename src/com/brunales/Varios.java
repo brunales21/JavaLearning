@@ -1,11 +1,10 @@
-import java.util.Random;
+package com.brunales;
+
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        
-    }
+public class Varios {
 
+    static Scanner sc = new Scanner(System.in);
     static int[] c = {9, 10, 12, 5, 7};
     static int[] a = {1, 2, 3, 4, 5};
 
@@ -41,7 +40,6 @@ public class Main {
             System.out.print(array[i]+" ");
         }
     }
-    static Scanner sc = new Scanner(System.in);
 
     public static int getAscii(char x) {
         return (int) x;
