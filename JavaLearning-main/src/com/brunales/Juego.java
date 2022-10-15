@@ -132,29 +132,37 @@ public class Juego {
     public static void ahorcado() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
-        String[] words = {"arbol", "pantalla"};
+        String[] words = {"arbol", "pantalla"}; //<--Posibles opciones
         do {
             System.out.println("Adivina la palabra");
-            String word = words[rand.nextInt(words.length)];
-            String aux = rightPadding("", '*', word.length());
 
-            System.out.println(aux);
+            String word = words[rand.nextInt(words.length)]; //Elije opcion al azar
+            String aux = rightPadding("", '_', word.length()); //Texto de '_' los cuales se iran cambiando x letras
+
+            String letrasFalladas = "";
+            System.out.println(aux); // "______"
             do {
                 System.out.println();
                 System.out.println("INTRODUCE UNA LETRA");
                 String line = sc.nextLine();
                 char letra = line.charAt(0);
-                for (int i = 0; i < word.length(); i++) {
-                    if (letra == word.charAt(i)) {
-                        aux = insertIn2(aux, letra, i);
+
+                boolean acierto = false;
+                for (int i = 0; i < word.length(); i++) { //Este bucle for se ejecuta una vez por intento
+                    if (letra == word.charAt(i)) { //Entra en la condicion si acierta la letra
+                        aux = insertIn2(aux, letra, i); //Se sustituye letra en su posicion correspondiente
+                        acierto = true;
                     }
                 }
-                System.out.println(aux);
-            } while (hayAsteriscos(aux));
-
+                if (!acierto) {
+                    letrasFalladas += letra;
+                }
+                System.out.println("Fallos: ["+letrasFalladas+"]");
+                System.out.println(aux); //Muestra el progreso
+            } while (hayBarras(aux));
+            System.out.println("FELICIDADES, TE HAS SALVADO");
         } while (seguirJugando());
     }
-
 
 
         public static String insertIn(String text, char c, int i) {
@@ -183,8 +191,8 @@ public class Juego {
             return text;
         }
 
-        private static boolean hayAsteriscos(String txt) {
-            return txt.indexOf('*') != -1;
+        private static boolean hayBarras(String txt) {
+            return txt.indexOf('_') != -1;
         }
 
 }
