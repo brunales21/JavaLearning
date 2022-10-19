@@ -5,8 +5,60 @@ import java.util.Scanner;
 public class Varios {
 
     static Scanner sc = new Scanner(System.in);
-    static int[] c = {9, 10, 12, 5, 7};
-    static int[] a = {1, 2, 3, 4, 5};
+
+    //Input: 3 enteros. a, b y c.
+        //si se quiere solo resultados ENTEROS hay que añadir la siguiente condicion al if
+        // && sqrt - (int) sqrt == 0
+    //Output: dos enteros. x1 y x2
+
+    public static void ecuacionSegundoGrado() {
+        System.out.print("Introduce a = ");
+        double a = sc.nextInt();
+        System.out.print("Introduce b = ");
+        double b = sc.nextInt();
+        System.out.print("Introduce c = ");
+        double c = sc.nextInt();
+
+        double sqrt = Math.sqrt((b * b) - (4 * a * c));
+        double x1 = (-b+ sqrt)/(2*a);
+        double x2 = (-b- sqrt)/(2*a);
+
+        if (sqrt>0) {
+            System.out.println("x1 = "+x1);
+            System.out.println("x2 = "+x2);
+        } else {
+            System.out.println("no existe");
+        }
+    }
+
+    //Input: lado del triangulo
+    //Output: area y perimetro
+    public static void areaYperimetroTriangulo() {
+        System.out.println("Introduce el lado del triangulo: ");
+        double lado = sc.nextInt();
+        double altura = Math.sqrt(lado*lado-(lado/2)*(lado/2));
+        double area = (lado*altura)/2;
+        double per = 3*lado;
+        System.out.println("Area = " + area);
+        System.out.println("Perimetro = " + per);
+    }
+    //Input: radio de circunferencia
+    //Output: perimetro
+    public static void perimetroCircunferencia() {
+        System.out.println("Introduce el radio de la circunferencia: ");
+        double radio = sc.nextInt();
+        double perimetro = 2*Math.PI*radio;
+        System.out.println("Area = " + perimetro);
+    }
+
+    //Input: radio de circunferencia
+    //Output: area
+    public static void areaCircunferencia() {
+        System.out.println("Introduce el radio de la circunferencia: ");
+        double radio = sc.nextInt();
+        double area = Math.PI * Math.pow(radio, 2);
+        System.out.println("Area = " + area);
+    }
 
     //Input: array de integers
     //Output: mayor incremento de paso 1

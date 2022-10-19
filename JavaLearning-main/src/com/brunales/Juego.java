@@ -108,31 +108,12 @@ public class Juego {
                 System.out.println(nombreUser+" "+puntuacionUser +" - " +puntuacionPc+ " " + " "+nombrePc);
 
             } while(seguirJugando());
-
-        }
-
-
-
-        //Esta funcion simplemente devuelve verdadero o falso en funcion del input (si recibe una s/y devuelve verdadero, si no falso)
-        public static boolean seguirJugando() {
-
-            Scanner scanner = new Scanner(System.in);
-            String input;
-            do {
-                System.out.println("DESEA JUGAR OTRA PARTIDA? (y/n)");
-                input = scanner.nextLine();
-            } while (RESPUESTAS_POSITIVAS.indexOf(input.charAt(0)) == -1 && RESPUESTAS_NEGATIVAS.indexOf(input.charAt(0)) == -1);
-
-            if (RESPUESTAS_POSITIVAS.indexOf(input.charAt(0)) != -1) {
-                return true;
-            }
-            return false;
         }
 
     public static void ahorcado() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
-        String[] words = {"arbol", "pantalla"}; //<--Posibles opciones
+        String[] words = {"arbol", "pantalla", "laura es tonta"}; //<--Posibles opciones
         do {
             System.out.println("Adivina la palabra");
 
@@ -159,11 +140,26 @@ public class Juego {
                 }
                 System.out.println("Fallos: ["+letrasFalladas+"]");
                 System.out.println(aux); //Muestra el progreso
-            } while (hayBarras(aux));
+            } while (hayChar(aux, '_'));
             System.out.println("FELICIDADES, TE HAS SALVADO");
         } while (seguirJugando());
     }
 
+        //Esta funcion simplemente devuelve verdadero o falso en funcion del input (si recibe una s/y devuelve verdadero, si no falso)
+        public static boolean seguirJugando() {
+
+            Scanner scanner = new Scanner(System.in);
+            String input;
+            do {
+                System.out.println("DESEA JUGAR OTRA PARTIDA? (y/n)");
+                input = scanner.nextLine();
+            } while (RESPUESTAS_POSITIVAS.indexOf(input.charAt(0)) == -1 && RESPUESTAS_NEGATIVAS.indexOf(input.charAt(0)) == -1);
+
+            if (RESPUESTAS_POSITIVAS.indexOf(input.charAt(0)) != -1) {
+                return true;
+            }
+            return false;
+        }
 
         public static String insertIn(String text, char c, int i) {
             char[] chars = new char[text.length()];
@@ -191,8 +187,8 @@ public class Juego {
             return text;
         }
 
-        private static boolean hayBarras(String txt) {
-            return txt.indexOf('_') != -1;
+        private static boolean hayChar(String txt, char c) {
+            return txt.indexOf(c) != -1;
         }
 
 }
