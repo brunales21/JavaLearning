@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class Varios {
 
-    static Scanner sc = new Scanner(System.in);
+
     static int[] c = {9, 10, 12, 5, 7};
     static int[] a = {1, 2, 3, 4, 5};
+
 
     //Input: array de integers
     //Output: mayor incremento de paso 1
@@ -36,8 +37,8 @@ public class Varios {
     //Input: array de numeros
     //Output: lo imprime
     public static void showIntArray(int[] array) {
-        for (int i = 0; i<array.length; i++) {
-            System.out.print(array[i]+" ");
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
     }
 
@@ -66,60 +67,5 @@ public class Varios {
         }
         return sigla.toUpperCase();
     }
-
-    public static void saludo() {
-        String nombre = sc.nextLine();
-        System.out.println("Hola " + nombre);
-    }
-
-    public static void getChar() {
-        char caracter = sc.nextLine().charAt(0);
-        System.out.println(caracter);
-    }
-
-    public static void sumar() {
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        System.out.println(a + b);
-    }
-
-    public static void getMedia() {
-        System.out.print("Introduce el numero de elementos sobre los cuales quieras calcular la media: ");
-        int x = sc.nextInt();
-
-        double a = 0;
-        for (int i = 0; i < x; i++) {
-            System.out.print("Elemento " + i + " :");
-            a += sc.nextInt();
-        }
-        double m = a / x;
-        System.out.println("Media = " + m);
-    }
-
-    public static void conversionDeTemp() {
-        System.out.print("Introduce la temperatura en CÂº: ");
-        double c = sc.nextInt();
-        double f = (c * 1.8) + 32;
-        double k = c + 273.15;
-        double r = 4 * c / 5;
-        System.out.println("Farenheit = " + f);
-        System.out.println("Kelvin = " + k);
-        System.out.println("Reaumur = " + r);
-    }
-
-    public static void distAtoB() {
-
-        System.out.println("Introduce las coordenadas del punto 1 = ");
-        float x1 = sc.nextInt();
-        float y1 = sc.nextInt();
-        System.out.println("Introduce las coordenadas del punto 2 = ");
-        float x2 = sc.nextInt();
-        float y2 = sc.nextInt();
-
-        float x = x2 - x1;
-        float y = y2 - y1;
-        float distance = (float) Math.sqrt(x * x + y * y);
-
-        System.out.println("Distance = " + distance);
-    }
 }
+
